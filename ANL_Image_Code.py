@@ -31,21 +31,48 @@ def combine_imgs(img, img2, bkg, cmax=1):
     cimg[:, shape[1] * 2] = 63
     return cimg
 
+def show_images(image):
+    plt.imshow(image, vmax=2)
+    plt.colorbar()
+    plt.show()
+    
 
+
+
+# understand every step of this function if its a function 
+# what kind of data input is it/ data type
+# what is the output and output type
+
+# Youve set the default values for count_cutoff to 16 and for background to 0
 def remove_connected_original(img, count_cutoff=16, background=0):
+    # Displays the Original image 
+    show_images(img)
+    # Displays a binary image where pixels greater than 0 are set to True.
+    show_images(img > 0)
+    # Labels connected components in the binary image.
     all_labels = measure.label(img > 0, background=background)
+    # Counts the occurrences of each label.
     count = np.bincount(all_labels.flatten())
+    # Creates a boolean mask for labels exceeding the count cutoff.
     mask = count > count_cutoff
 
+    # Creates a copy of the original image.
     img2 = np.copy(img)
+    # Iterates over the labels, excluding the background.
     for n in range(1, len(mask)):
+        # Checks if the current label satisfies the mask condition.
         if mask[n]:
+            # Creates a binary image for the current label.
             roi = all_labels == n
+            # Extracts pixel values from the original image within the region of interest.
             val = img[roi]
+            # Checks if all pixels within the region have the same value.
             if np.min(val) == np.max(val):
+                # Sets pixels in the copied image belonging to the region to 0.
                 img2[roi] = 0
+    #Creates a new image containing the removed regions.
     bkg = img - img2
-    
+    # Returns the modified image (img2) and the background image (bkg)
     return img2, bkg
 
 
@@ -109,7 +136,8 @@ if __name__ == '__main__':
     # The line files = glob.glob('./Argonne-Internship/*.tif') is using the glob module to find all files
     #  with the extension .tif in the Argonne-Internship directory. 
     # The glob.glob() function returns a list of file paths matching the specified pattern.
-    files = glob.glob('./Argonne-Internship/*.tif')
+    files = glob.glob('./Raw_Data/*.tif')
+    print(files)
     # this is used to measure the starting time of the code 
     t0 = time.perf_counter()
     # for n in range(len(files)):
