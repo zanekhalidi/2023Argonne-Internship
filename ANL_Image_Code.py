@@ -32,7 +32,7 @@ def combine_imgs(img, img2, bkg, cmax=1):
     return cimg
 
 def show_images(image):
-    plt.imshow(image, vmax=2)
+    plt.imshow(image)
     plt.colorbar()
     plt.show()
     
@@ -46,11 +46,12 @@ def show_images(image):
 # Youve set the default values for count_cutoff to 16 and for background to 0
 def remove_connected_original(img, count_cutoff=16, background=0):
     # Displays the Original image 
-    show_images(img)
+   # show_images(img)
     # Displays a binary image where pixels greater than 0 are set to True.
-    show_images(img > 0)
+   # show_images(img > 0)
     # Labels connected components in the binary image.
     all_labels = measure.label(img > 0, background=background)
+   # show_images(all_labels)
     # label_type =type(all_labels) 
     print(type(all_labels))
     print(all_labels.shape)
@@ -66,6 +67,7 @@ def remove_connected_original(img, count_cutoff=16, background=0):
     img2 = np.copy(img)
     # Iterates over the labels, excluding the background.
     for n in range(1, len(mask)):
+        print(n, count[n], mask[n])
         # Checks if the current label satisfies the mask condition.
         if mask[n]:
             # Creates a binary image for the current label.
@@ -87,6 +89,8 @@ def remove_connected_dilation(img, count_cutoff=1, background=0):
     mask_valid = img > 0
     # Label connected regions in the mask using the measure.label function.
     all_labels = measure.label(mask_valid, background=background)
+    
+
     # Perform binary erosion on the mask to remove small isolated regions.
     mask_valid = binary_erosion(mask_valid)
 
