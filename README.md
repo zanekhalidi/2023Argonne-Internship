@@ -33,29 +33,6 @@ This code was written in Python and created for the purpose of taking the x-ray 
 2. The intensity values of each input image are normalized and adjusted to fit within the range of 0 to 255 before combining.
 3. The function returns the composite image.
 
-def combine_imgs(img, img2, bkg, cmax=1):
-    """Combine three images into a single composite image.
-
-    This function combines three input images 'img', 'img2', and 'bkg' side by side into a single image.
-    It uses NumPy for array manipulation and scaling pixel values to the range [0, 255].
-    
-    Parameters
-    ----------
-    img : numpy.ndarray
-        The first input image.
-    img2 : numpy.ndarray
-        The second input image.
-    bkg : numpy.ndarray
-        The background image.
-    cmax : float, optional
-        The maximum value for scaling pixel values. Default is 1.
-
-    Returns
-    -------
-    numpy.ndarray
-        A composite image with the three input images combined.
-
-
 *remove_connected_original*
 1. Removes connected regions (connected components) from the input binary image (img) based on their size.
 2. It labels the connected regions in the binary image and calculates the size of each region.
