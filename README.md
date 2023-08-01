@@ -83,6 +83,7 @@ import pandas as pd
 
 
 def combine_imgs(img, img2, bkg, cmax=1):
+
     """Combine three images horizontally into a single composite image.
 
     Parameters
@@ -116,6 +117,7 @@ def combine_imgs(img, img2, bkg, cmax=1):
 
 
 def show_images(image):
+
     """Display the input image with a colorbar.
 
     Parameters
@@ -135,6 +137,7 @@ def show_images(image):
 
 
 def remove_connected_original(img, count_cutoff=16, background=0):
+
     """Remove connected regions from the input binary image using count-based criteria.
 
     Parameters
@@ -170,6 +173,7 @@ def remove_connected_original(img, count_cutoff=16, background=0):
 
 
 def remove_connected_dilation(img, count_cutoff=1, background=0):
+
     """Remove connected regions from the input binary image using binary erosion.
 
     Parameters
@@ -206,6 +210,7 @@ def remove_connected_dilation(img, count_cutoff=1, background=0):
 
 
 def remove_connected(img, count_cutoff=1, background=0):
+
     """Remove connected regions from the input binary image based on region properties.
 
     This function removes connected regions from the input binary image 'img' based on region properties such as area and solidity.
@@ -248,6 +253,7 @@ def remove_connected(img, count_cutoff=1, background=0):
 
 
 def show_result(img, img2, bkg):
+
     """Display the original image, cleaned image, and background image in separate subplots.
 
     Parameters
