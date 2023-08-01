@@ -77,7 +77,7 @@ https://github.com/zanekhalidi/2023Argonne-Internship/blob/8609489428c6cfd0d1398
 https://github.com/zanekhalidi/2023Argonne-Internship/blob/8609489428c6cfd0d1398d2bf5564feba2d3a997/ANL_Image_Code.py?plain=1#L169-L194
 
 
-**Numpy Explanation:**
+**Numpy Style Explanation:**
 
 
 
