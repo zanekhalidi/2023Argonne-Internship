@@ -35,18 +35,7 @@ This code was written in Python and created for the purpose of taking the x-ray 
 2. The intensity values of each input image are normalized and adjusted to fit within the range of 0 to 255 before combining.
 3. The function returns the composite image.
 
-def combine_imgs(img, img2, bkg, cmax=1):
-    shape = img.shape
-    cimg = np.zeros((shape[0], shape[1] * 3), dtype=np.uint8)
-    value = (img, img2, bkg)
-    for n in range(3):
-        temp = value[n] * 255.0 // cmax
-        temp[temp > 255] = 255
-        cimg[:, n * shape[1]: (n + 1) * shape[1]] = temp
-
-    cimg[:, shape[1] * 1] = 63
-    cimg[:, shape[1] * 2] = 63
-    return cimg
+https://github.com/zanekhalidi/2023Argonne-Internship/blob/5df8fe980c06aeba58edcf7dc6bfe1cb7071fdb2/ANL_Image_Code.py#L17-L32
 
 *remove_connected_original*
 1. Removes connected regions (connected components) from the input binary image (img) based on their size.
