@@ -18,7 +18,7 @@ Secondary rays. When cosmic rays enter the Earth's atmosphere, they collide with
 
 
 
-# **The Code**
+# **Our Algorithm**
 
 **A small Summary of what the code does:**
 
@@ -32,6 +32,29 @@ This code was written in Python and created for the purpose of taking the x-ray 
 1. Combines three input images (img, img2, bkg) side by side to create a single composite image.
 2. The intensity values of each input image are normalized and adjusted to fit within the range of 0 to 255 before combining.
 3. The function returns the composite image.
+
+def combine_imgs(img, img2, bkg, cmax=1):
+    """Combine three images into a single composite image.
+
+    This function combines three input images 'img', 'img2', and 'bkg' side by side into a single image.
+    It uses NumPy for array manipulation and scaling pixel values to the range [0, 255].
+    
+    Parameters
+    ----------
+    img : numpy.ndarray
+        The first input image.
+    img2 : numpy.ndarray
+        The second input image.
+    bkg : numpy.ndarray
+        The background image.
+    cmax : float, optional
+        The maximum value for scaling pixel values. Default is 1.
+
+    Returns
+    -------
+    numpy.ndarray
+        A composite image with the three input images combined.
+
 
 *remove_connected_original*
 1. Removes connected regions (connected components) from the input binary image (img) based on their size.
@@ -56,6 +79,8 @@ This code was written in Python and created for the purpose of taking the x-ray 
 
 *show_images*
 1. Displays a single image in a plot with a color bar to visualize its intensity values.
+
+
 
 *__main__*
 1. The main part of the code reads multiple image files, applies the *remove_connected_original* function to each image, combines the original image, cleaned image, and background image into a composite image, and saves the composite image as a JPEG file. It measures the time taken to process each image file and prints the time taken for each operation.
