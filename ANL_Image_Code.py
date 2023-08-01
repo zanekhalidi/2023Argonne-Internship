@@ -72,6 +72,7 @@ def remove_connected_original(img, count_cutoff=16, background=0):
         if mask[n]:
             # Creates a binary image for the current label.
             roi = all_labels == n
+
             # Extracts pixel values from the original image within the region of interest.
             val = img[roi]
             # Checks if all pixels within the region have the same value.

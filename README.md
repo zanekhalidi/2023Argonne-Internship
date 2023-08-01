@@ -76,6 +76,10 @@ https://github.com/zanekhalidi/2023Argonne-Internship/blob/8609489428c6cfd0d1398
 
 https://github.com/zanekhalidi/2023Argonne-Internship/blob/8609489428c6cfd0d1398d2bf5564feba2d3a997/ANL_Image_Code.py?plain=1#L169-L194
 
+*An example of the output:*
+![29Feb2023_scan113_point049](https://github.com/zanekhalidi/2023Argonne-Internship/assets/136121434/cebecc69-e878-4319-96b7-617b75e149af)
+
+As you can see here the figure on the bottom of the image to the left that looks similar to a broom is present within the image. This is infact a cosmic ray. We then see that within the next two images it is filtered out. 
 
 **Numpy Style Explanation:**
 
