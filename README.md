@@ -64,7 +64,6 @@ This code was written in Python and created for the purpose of taking the x-ray 
 
 **Numpy Explanation:**
 
-
 """Image Processing Functions.
 
 This module contains functions for image processing, including removing connected regions
@@ -220,7 +219,6 @@ def remove_connected(img, count_cutoff=1, background=0):
     count_cutoff : int, optional
         The minimum count of pixels for a connected region to be removed. Default is 1.
     background : int, optional
-background : int, optional
         The value of the background in the binary image. Default is 0.
 
     Returns
@@ -289,5 +287,6 @@ if __name__ == '__main__':
         skio.imsave(os.path.basename(files[n]).replace('.tif', '.jpg'), cimg)
     t1 = time.perf_counter()
     print(t1 - t0)
+
 
 
