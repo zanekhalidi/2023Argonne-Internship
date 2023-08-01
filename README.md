@@ -35,7 +35,6 @@ This code was written in Python and created for the purpose of taking the x-ray 
 2. The intensity values of each input image are normalized and adjusted to fit within the range of 0 to 255 before combining.
 3. The function returns the composite image.
 
-https://github.com/zanekhalidi/2023Argonne-Internship/blob/5df8fe980c06aeba58edcf7dc6bfe1cb7071fdb2/ANL_Image_Code.py#L17-L32
 
 *remove_connected_original*
 1. Removes connected regions (connected components) from the input binary image (img) based on their size.
