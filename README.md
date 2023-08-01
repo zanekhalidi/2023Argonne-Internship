@@ -68,6 +68,8 @@ https://github.com/zanekhalidi/2023Argonne-Internship/blob/8609489428c6cfd0d1398
 
 https://github.com/zanekhalidi/2023Argonne-Internship/blob/8609489428c6cfd0d1398d2bf5564feba2d3a997/ANL_Image_Code.py?plain=1#L117-L143
 
+![thumbnail_remove_connected drawio](https://github.com/zanekhalidi/2023Argonne-Internship/assets/136121434/e2ca9d1b-9810-468f-9a40-4888af8225ee)
+
 *show_result*
 1. Displays three images side by side in a figure: the original image (img), the cleaned image (img2), and the background image (bkg).
 
@@ -281,7 +283,6 @@ As you can see here the figure on the bottom of the image to the left that looks
         bkg = img - img2
         return img2, bkg
 
-![thumbnail_remove_connected drawio](https://github.com/zanekhalidi/2023Argonne-Internship/assets/136121434/e2ca9d1b-9810-468f-9a40-4888af8225ee)
 
 
     def show_result(img, img2, bkg):
