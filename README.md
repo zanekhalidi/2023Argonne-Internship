@@ -35,6 +35,7 @@ This code was written in Python and created for the purpose of taking the x-ray 
 2. The intensity values of each input image are normalized and adjusted to fit within the range of 0 to 255 before combining.
 3. The function returns the composite image.
 
+https://github.com/zanekhalidi/2023Argonne-Internship/blob/8609489428c6cfd0d1398d2bf5564feba2d3a997/ANL_Image_Code.py?plain=1#L17-L32
 
 *remove_connected_original*
 1. Removes connected regions (connected components) from the input binary image (img) based on their size.
@@ -42,11 +43,15 @@ This code was written in Python and created for the purpose of taking the x-ray 
 3. Connected regions with a size below the specified *count_cutoff*  are considered noise and are removed by setting their pixels to zero.
 4. The function returns the cleaned binary image (img2) and the background image (bkg) containing the removed regions.
 
+https://github.com/zanekhalidi/2023Argonne-Internship/blob/8609489428c6cfd0d1398d2bf5564feba2d3a997/ANL_Image_Code.py?plain=1#L47-L84
+
 *remove_connected_dilation*
 1. Removes connected regions from the input binary image (img) using a different approach.
 2. It labels connected regions in the binary image and counts the pixels in each region.
 3. Connected regions with a size below the specified *count_cutoff* are considered noise and are removed by setting their pixels to zero.
 4. The function returns the cleaned binary image (img2) and the background image (bkg) containing the removed regions.
+
+https://github.com/zanekhalidi/2023Argonne-Internship/blob/8609489428c6cfd0d1398d2bf5564feba2d3a997/ANL_Image_Code.py?plain=1#L87-L114
 
 *remove_connected*
 1. Removes connected regions from the input binary image (img) based on region properties like area and solidity.
@@ -54,18 +59,22 @@ This code was written in Python and created for the purpose of taking the x-ray 
 3. Regions with an area less than 5 or solidity greater than or equal to 0.4 are considered noise and are removed by setting their pixels to zero.
 4. The function returns the cleaned binary image (img2) and the background image (bkg) containing the removed regions.
 
+https://github.com/zanekhalidi/2023Argonne-Internship/blob/8609489428c6cfd0d1398d2bf5564feba2d3a997/ANL_Image_Code.py?plain=1#L117-L143
+
 *show_result*
 1. Displays three images side by side in a figure: the original image (img), the cleaned image (img2), and the background image (bkg).
+
+https://github.com/zanekhalidi/2023Argonne-Internship/blob/8609489428c6cfd0d1398d2bf5564feba2d3a997/ANL_Image_Code.py?plain=1#L146-L166
 
 *show_images*
 1. Displays a single image in a plot with a color bar to visualize its intensity values.
 
-
+https://github.com/zanekhalidi/2023Argonne-Internship/blob/8609489428c6cfd0d1398d2bf5564feba2d3a997/ANL_Image_Code.py?plain=1#L34-L37
 
 *__main__*
 1. The main part of the code reads multiple image files, applies the *remove_connected_original* function to each image, combines the original image, cleaned image, and background image into a composite image, and saves the composite image as a JPEG file. It measures the time taken to process each image file and prints the time taken for each operation.
 
-
+https://github.com/zanekhalidi/2023Argonne-Internship/blob/8609489428c6cfd0d1398d2bf5564feba2d3a997/ANL_Image_Code.py?plain=1#L169-L194
 
 
 **Numpy Explanation:**
