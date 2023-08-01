@@ -26,7 +26,9 @@ This code was written in Python and created for the purpose of taking the x-ray 
 
 
 
-**A Summary of each function**
+
+
+**A Summary of each function:**
 
 *combine_imgs*
 1. Combines three input images (img, img2, bkg) side by side to create a single composite image.
