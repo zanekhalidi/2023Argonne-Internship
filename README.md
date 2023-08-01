@@ -327,5 +327,8 @@ As you can see here the figure on the bottom of the image to the left that looks
             t1 = time.perf_counter()
             print(t1 - t0)
 
+**Flowchart:**
+
+![thumbnail_BIG FLOW drawio](https://github.com/zanekhalidi/2023Argonne-Internship/assets/136121434/4443f178-6c4e-428f-963f-9733a6e57750)
 
 
