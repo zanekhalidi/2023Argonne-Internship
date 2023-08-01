@@ -62,7 +62,12 @@ This code was written in Python and created for the purpose of taking the x-ray 
 *__main__*
 1. The main part of the code reads multiple image files, applies the *remove_connected_original* function to each image, combines the original image, cleaned image, and background image into a composite image, and saves the composite image as a JPEG file. It measures the time taken to process each image file and prints the time taken for each operation.
 
+
+
+
 **Numpy Explanation:**
+
+
 
 """Image Processing Functions.
 
@@ -80,6 +85,8 @@ import glob
 import time
 import os
 import pandas as pd
+
+
 
 
 def combine_imgs(img, img2, bkg, cmax=1):
@@ -282,17 +289,17 @@ def show_result(img, img2, bkg):
     plt.close(fig)
 
 
-if __name__ == '__main__':
-    files = glob.glob('./Raw_Data/*.tif')
-    t0 = time.perf_counter()
-    for n in range(len(files)):
-        print(files[n])
-        a = skio.imread(files[n])
-        img2, bkg = remove_connected(a)
-        cimg = combine_imgs(a, img2, bkg)
-        skio.imsave(os.path.basename(files[n]).replace('.tif', '.jpg'), cimg)
-    t1 = time.perf_counter()
-    print(t1 - t0)
+    if __name__ == '__main__':
+        files = glob.glob('./Raw_Data/*.tif')
+        t0 = time.perf_counter()
+        for n in range(len(files)):
+            print(files[n])
+            a = skio.imread(files[n])
+            img2, bkg = remove_connected(a)
+            cimg = combine_imgs(a, img2, bkg)
+            skio.imsave(os.path.basename(files[n]).replace('.tif', '.jpg'), cimg)
+        t1 = time.perf_counter()
+        print(t1 - t0)
 
 
 
