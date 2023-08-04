@@ -19,7 +19,7 @@ def combine_imgs(img, img2, bkg, cmax=1):
     # in this case its seeing the dimesions of the first imag
     shape = img.shape
     # this is using numpy zeros in order to
-    cimg = np.zeros((shape[0], shape[1] * 3), dtype=np.uint8) 
+    cimg = np.zeros((shape[0], shape[1] * 3), dtype=np.uint8)
     value = (img, img2, bkg)
     for n in range(3):
         temp = value[n] * 255.0 // cmax
@@ -31,35 +31,31 @@ def combine_imgs(img, img2, bkg, cmax=1):
     cimg[:, shape[1] * 2] = 63
     return cimg
 
+
 def show_images(image):
     plt.imshow(image)
     plt.colorbar()
     plt.show()
-    
 
 
-
-# understand every step of this function if its a function 
-# what kind of data input is it/ data type
-# what is the output and output type
 
 # Youve set the default values for count_cutoff to 16 and for background to 0
 def remove_connected_original(img, count_cutoff=16, background=0):
-    # Displays the Original image 
+    # Displays the Original image
    # show_images(img)
     # Displays a binary image where pixels greater than 0 are set to True.
    # show_images(img > 0)
     # Labels connected components in the binary image.
     all_labels = measure.label(img > 0, background=background)
    # show_images(all_labels)
-    # label_type =type(all_labels) 
+    # label_type =type(all_labels)
     print(type(all_labels))
     print(all_labels.shape)
     # Counts the occurrences of each label.
     count = np.bincount(all_labels.flatten())
     print("count", type(count), count.shape)
     print(count)
-    
+
     # Creates a boolean mask for labels exceeding the count cutoff.
     mask = count > count_cutoff
 
@@ -90,20 +86,18 @@ def remove_connected_dilation(img, count_cutoff=1, background=0):
     mask_valid = img > 0
     # Label connected regions in the mask using the measure.label function.
     all_labels = measure.label(mask_valid, background=background)
-    
 
     # Perform binary erosion on the mask to remove small isolated regions.
     mask_valid = binary_erosion(mask_valid)
 
-
-    #Count the number of pixels belonging to each labeled region in the mask.
+    # Count the number of pixels belonging to each labeled region in the mask.
     count = np.bincount((all_labels * mask_valid).flatten())
     # mask = count > count_cutoff
     mask = count < count_cutoff
 
     # Create a copy of the original image.
     img2 = np.copy(img)
-    # Iterate over the labeled regions and set the corresponding pixels in img2 to zero 
+    # Iterate over the labeled regions and set the corresponding pixels in img2 to zero
     # # if they belong to a region marked by the mask.
     for n in range(1, len(mask)):
         if mask[n]:
@@ -123,7 +117,8 @@ def remove_connected(img, count_cutoff=1, background=0):
     # mask_valid = binary_erosion(mask_valid)
 
     # count = np.bincount((all_labels * mask_valid).flatten())
-    props = measure.regionprops_table(all_labels, properties=('label', 'solidity', 'perimeter', 'area'))
+    props = measure.regionprops_table(all_labels, properties=(
+        'label', 'solidity', 'perimeter', 'area'))
     # Create a pandas DataFrame from the region properties.
     data = pd.DataFrame(props)
     # Filter the DataFrame to include only regions with an area greater than or equal to 5 and solidity less than 0.4.
@@ -148,15 +143,15 @@ def show_result(img, img2, bkg):
     # Create a figure with three subplots arranged in a row, with a specified size.
     fig, ax = plt.subplots(1, 3, figsize=(12, 4))
     # imshow is from matplot lab and its purpose is to display images on specified subplots
-    ax[0].imshow(img, vmin=0, vmax=1)	
+    ax[0].imshow(img, vmin=0, vmax=1)
     # Set the title of the first subplot to "raw_data".
     ax[0].set_title('raw_data')
-    # Display the cleaned image (img2) on the second subplot using the imshow function,  
+    # Display the cleaned image (img2) on the second subplot using the imshow function,
     # with a specified range of pixel values (0 to 1).
-    ax[1].imshow(img2, vmin=0, vmax=1)	
+    ax[1].imshow(img2, vmin=0, vmax=1)
     # Set the title of the second subplot to "clean".
     ax[1].set_title('clean')
-    # Display the background image (bkg) on the third subplot using the imshow function, 
+    # Display the background image (bkg) on the third subplot using the imshow function,
     # with a specified range of pixel values (0 to 1).
     ax[2].imshow(bkg, vmin=0, vmax=1)
     # Set the title of the third subplot to "bkg".
@@ -169,24 +164,24 @@ def show_result(img, img2, bkg):
 
 if __name__ == '__main__':
     # The line files = glob.glob('./Argonne-Internship/*.tif') is using the glob module to find all files
-    #  with the extension .tif in the Argonne-Internship directory. 
+    #  with the extension .tif in the Argonne-Internship directory.
     # The glob.glob() function returns a list of file paths matching the specified pattern.
     files = glob.glob('./Raw_Data/*.tif')
     # print(files)
-    # this is used to measure the starting time of the code 
+    # this is used to measure the starting time of the code
     t0 = time.perf_counter()
     # for n in range(len(files)):
     for n in range(1):
         print(files[n])
         # imread is from skimage #
-        # The line a = skio.imread(files[n]) reads an image file from the specified file path 
+        # The line a = skio.imread(files[n]) reads an image file from the specified file path
         # and stores the image data in the variable a
         a = skio.imread(files[n])
         # This line calls remove_connected_original and passes the image a as an argument
         img2, bkg = remove_connected_original(a)
         # This line calls combine_imgs and passes three arguments which are a, img2, and bkg
         cimg = combine_imgs(a, img2, bkg)
-        # This line saves the composite image cimg as a JPEG file. 
+        # This line saves the composite image cimg as a JPEG file.
         # The skio.imsave() function from the scikit-image (skimage) library is used for this purpose.
         skio.imsave(os.path.basename(files[n]).replace('.tif', '.jpg'), cimg)
     # this would be the end time of running the code
