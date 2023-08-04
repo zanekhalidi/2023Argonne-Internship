@@ -219,14 +219,14 @@ def show_result(img, img2, bkg):
     plt.close(fig)
 
 
-    if __name__ == '__main__':
-        files = glob.glob('./Raw_Data/*.tif')
-        t0 = time.perf_counter()
-        for n in range(len(files)):
-            print(files[n])
-            a = skio.imread(files[n])
-            img2, bkg = remove_connected(a)
-            cimg = combine_imgs(a, img2, bkg)
-            skio.imsave(os.path.basename(files[n]).replace('.tif', '.jpg'), cimg)
-        t1 = time.perf_counter()
-        print(t1 - t0)
+if __name__ == '__main__':
+    files = glob.glob('./Raw_Data/*.tif')
+    t0 = time.perf_counter()
+    for n in range(len(files)):
+        print(files[n])
+        a = skio.imread(files[n])
+        img2, bkg = remove_connected(a)
+        cimg = combine_imgs(a, img2, bkg)
+        skio.imsave(os.path.basename(files[n]).replace('.tif', '.jpg'), cimg)
+    t1 = time.perf_counter()
+    print(t1 - t0)
